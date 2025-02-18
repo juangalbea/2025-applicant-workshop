@@ -20,13 +20,30 @@ colorButton.addEventListener('click', () => {
 const form = document.getElementById('feedback-form');
 const formResponse = document.getElementById('form-response');
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const feedback = document.getElementById('feedback').value;
-    formResponse.textContent = `Thank you, ${name}, for your feedback: "${feedback}"`;
-    form.reset();
+document.getElementById('feedback-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const feedback = document.getElementById('feedback').value.trim();
+    if (!name || !feedback) return;
+    
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `${name}: ${feedback} <button onclick="this.parentElement.remove()">Delete</button>`;
+    
+    let list = document.getElementById('feedback-list');
+    if (!list) {
+        list = document.createElement('ul');
+        list.id = 'feedback-list';
+        document.getElementById('form-response').appendChild(list);
+    }
+    
+    list.appendChild(listItem);
+    e.target.reset();
 });
+
+// Switch light and dark theme
+ document.getElementById('btn-toggle1').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+ });
 
 /* IDEAS FOR ADDITIONAL INTERACTIONS
 

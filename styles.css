@@ -19,6 +19,9 @@ header {
     color: white;
     padding: 1rem;
     text-align: center;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
 }
 
 nav ul {
@@ -48,6 +51,7 @@ nav a:hover {
     background-color: white;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    scroll-margin-top: 180px;
 }
 
 button {
@@ -103,4 +107,18 @@ footer {
     text-align: center;
     padding: 1rem;
     margin-top: 2rem;
+}
+
+.dark-mode {
+    --primary-color: #000000;
+    --secondary-color: #fbfbfb;
+    --font-family: Arial, sans-serif;
+    --text-color: #333;
+    --border-radius: 5pc;
+    background-color: grey;
+}
+
+.dark-mode .content-section {
+    background-color: #333;
+    color: white;
 }
